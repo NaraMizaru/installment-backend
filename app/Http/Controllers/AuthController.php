@@ -41,4 +41,13 @@ class AuthController extends Controller
             'regional' => $user->regional
         ], 200);
     }
+
+    public function logout(Request $request)
+    {
+        $request->user()->tokens()->delete();
+
+        return response()->json([
+            'message' => 'Logout success'
+        ], 200);
+    }
 }
