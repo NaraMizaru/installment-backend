@@ -6,5 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class InstallmentApplySociety extends Model
 {
-    //
+    public $timestamps = false;
+
 }

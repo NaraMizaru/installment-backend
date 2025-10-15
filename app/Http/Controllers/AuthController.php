@@ -22,14 +22,14 @@ class AuthController extends Controller
             ], 422);
         }
 
-        $auth = Auth::attempt($request->only(['id_card_number', 'password']));
+        $auth = Auth::guard('society')->attempt($request->only(['id_card_number', 'password']));
         if (!$auth) {
             return response()->json([
                 'message' => 'ID Card Number or Password incorrect'
             ], 401);
         }
 
-        $user = Auth::user();
+        $user = Auth::guard('society')->user();
         $token = $user->createToken('auth_token')->plainTextToken;
 
         return response()->json([
@@ -37,7 +37,8 @@ class AuthController extends Controller
             "born_date" => $user->born_date,
             "gender" => $user->gender,
             "address" => $user->address,
-            "token" => $token
+            "token" => $token,
+            'regional' => $user->regional
         ], 200);
     }
 }

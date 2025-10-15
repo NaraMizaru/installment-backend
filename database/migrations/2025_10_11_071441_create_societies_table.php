@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('name');
             $table->date('born_date');
-            $table->enum('male', ['male', 'female']);
+            $table->enum('gender', ['male', 'female']);
             $table->text('address');
             $table->foreignIdFor(\App\Models\Regional::class)->constrained()->cascadeOnDelete();
         });

@@ -6,5 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Regional extends Model
 {
-    //
+    public $timestamps = false;
+
 }
