@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\InstallmentController;
 use App\Http\Controllers\RequestDataValidationController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -19,6 +20,13 @@ Route::prefix('v1')->group(function() {
        Route::controller(RequestDataValidationController::class)->group(function () {
           Route::post('/validation', 'requestDataValidation');
           Route::get('/validation', 'getValidations');
+       });
+
+       Route::controller(InstallmentController::class)->group(function() {
+           Route::get('/installment_cars', 'getInstallment');
+           Route::get('/installment_cars/{installment}', 'getInstallmentById');
+           Route::post('/applications', 'applyInstallment');
+           Route::get('/applications', 'getApplications');
        });
    });
 });
