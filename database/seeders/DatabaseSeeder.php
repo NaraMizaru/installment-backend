@@ -26,25 +26,43 @@ class DatabaseSeeder extends Seeder
 //            'email' => 'test@example.com',
 //        ]);
 
-        $regional = Regional::create([
-            'province' => 'Province A',
-            'district' => 'District A',
-        ]);
-
-        Society::create([
-            'id_card_number' => '12345678',
-            'password' => bcrypt('12345678'),
-            'name' => 'John Doe',
-            'born_date' => '1990-01-01',
-            'gender' => 'male',
-            'address' => '123 Main St',
-            'regional_id' => $regional->id,
-        ]);
-
-        Validator::create([
-            'name' => 'Validator 1',
-            'role' => 'validator'
-        ]);
+//        $regional = Regional::create([
+//            'province' => 'Province A',
+//            'district' => 'District A',
+//        ]);
+//
+//        Society::create([
+//            'id_card_number' => '12345678',
+//            'password' => bcrypt('12345678'),
+//            'name' => 'John Doe',
+//            'born_date' => '1990-01-01',
+//            'gender' => 'male',
+//            'address' => '123 Main St',
+//            'regional_id' => $regional->id,
+//        ]);
+//
+//        Validator::create([
+//            'name' => 'Validator 1',
+//            'role' => 'validator'
+//        ]);
+//
+//        $brands = Brand::create([
+//            'brand' => 'Toyota'
+//        ]);
+//
+//        $installment = Installment::create([
+//            'brand_id' => $brands->id,
+//            'car' => 'Supra MK5',
+//            'description' => 'Lorem ipsum dolor sit amet',
+//            'price' => 600000000,
+//        ]);
+//
+//        AvailableMonth::create([
+//            'installment_id' => $installment->id,
+//            'month' => 12,
+//            'description' => 'First month of the year',
+//            'nominal' => 100000
+//        ]);
 
         $brands = Brand::create([
             'brand' => 'Toyota'
@@ -52,7 +70,7 @@ class DatabaseSeeder extends Seeder
 
         $installment = Installment::create([
             'brand_id' => $brands->id,
-            'car' => 'Supra MK5',
+            'car' => 'Supra MK6',
             'description' => 'Lorem ipsum dolor sit amet',
             'price' => 600000000,
         ]);

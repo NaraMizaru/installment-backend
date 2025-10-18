@@ -12,4 +12,14 @@ class InstallmentApplySociety extends Model
     {
         return $this->belongsTo(AvailableMonth::class);
     }
+
+    public function brand()
+    {
+        return $this->belongsTo(Brand::class);
+    }
+
+    public function installment()
+    {
+        return $this->belongsTo(Installment::class);
+    }
 }

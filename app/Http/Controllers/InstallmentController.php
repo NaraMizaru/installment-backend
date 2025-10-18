@@ -90,24 +90,22 @@ class InstallmentController extends Controller
 
     public function getApplications()
     {
-        $installments = Installment::with('brand', 'availableMonth', 'applications')->get();
+        $installments = InstallmentApplySociety::with('brand', 'availableMonth', 'installment')->get();
 
         $response = $installments->map(function ($item) {
             return [
                 'installment' => [
-                    'id' => $item->id,
-                    'car' => $item->car,
-                    'brand' => $item->brand->brand,
-                    'price' => $item->price,
-                    'description' => $item->description,
-                    'applications' => $item->applications->map(function ($app) {
-                       return [
-                           'month' => $app->availableMonth->month,
-                           'nominal' => $app->availableMonth->nominal,
-                           'apply_status' => $app->status,
-                           'notes' => $app->notes
-                       ];
-                    }),
+                    'id' => $item->installment->id,
+                    'car' => $item->installment->car,
+                    'brand' => $item->installment->brand->brand,
+                    'price' => $item->installment->price,
+                    'description' => $item->installment->description,
+                    'application' => [
+                        'month' => $item->availableMonth->month,
+                        'nominal' => $item->availableMonth->nominal,
+                        'apply_status' => $item->status,
+                        'notes' => $item->notes
+                    ],
                 ]
             ];
         });
